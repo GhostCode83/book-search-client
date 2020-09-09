@@ -8,13 +8,6 @@ class App extends React.Component {
     super(props)
     this.state = {
       input: '',
-      books: '',
-      title: '',
-      image: '',
-      authors: '',
-      price: '',
-      description: '',
-      currencyCode: ''
     }
   }
 
@@ -43,20 +36,6 @@ class App extends React.Component {
       })
   }
 
-  /*const authors = book.volumeInfo.authors;
-       const imageUrl = book.volumeInfo.imageLinks.thumbnail;
-       const title = book.volumeInfo.title;
-       const description = book.volumeInfo.description;*/
-
-  /*if (book.saleInfo.listPrice.amount) {
-    const price = book.saleInfo.listPrice.amount
-  } else{
-    const price = ''
-  };
-  const currencyCode = book.saleInfo.listPrice.currencyCode;*/
-  /*image: 'volumeInfo.imageLinks.thumbnail',
-  author: 'volumeInfo.authors',
-  price: 'volumeInfo.listPrice.amount'*/
   handleChange = (event) => {
     this.setState({
       input: event.target.value
@@ -72,8 +51,8 @@ class App extends React.Component {
           state={this.state}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange} />
-        <BookList 
-          books={this.state.books}/>
+        <BookList
+          books={this.state.books} />
       </div>
     )
   }

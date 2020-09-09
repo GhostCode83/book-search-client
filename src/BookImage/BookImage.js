@@ -1,8 +1,15 @@
 import  React from 'react';
 
-function BookImage(){
+function BookImage(props){
+  let bookImage = Array.isArray(props.books) ? props.books.map((book, ind) => {
+
+    return (
+      <img />
+    )
+  })
+    : '';
   return (
-    <p style={{fontStyle: 'italic'}} >Image coming soon</p>
+    <div>{bookImage}</div>
   )
 }
 

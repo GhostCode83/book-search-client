@@ -1,17 +1,14 @@
 import React from 'react';
 import BookDetails from '../BookDetails/BookDetails';
 import BookImage from '../BookImage/BookImage';
-import BookTitle from '../BookTitle/BookTitle';
 
 function BookList(props) {
-  console.log(props.books)
   return (
     <main>
-      <div>
-        <BookTitle books={props.books}/>
+      <ul>
         <BookDetails books={props.books}/>
         <BookImage books={props.books}/>
-      </div>
+      </ul>
     </main>
   )
 }
