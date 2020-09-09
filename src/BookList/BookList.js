@@ -1,19 +1,19 @@
 import React from 'react';
-import BookDetails from '../Book/BookDetails';
+import BookDetails from '../BookDetails/BookDetails';
 import BookImage from '../BookImage/BookImage';
-import BookTitle from  '../BookTitle/BookTitle';
+import BookTitle from '../BookTitle/BookTitle';
 
-function BookList() {
-return(
-  <main>
-    <div>
-      <BookTitle />
-      <BookDetails />
-      <BookImage />
-
-    </div>
-  </main>
-)
+function BookList(props) {
+  console.log(props)
+  return (
+    <main>
+      <div>
+        <BookTitle books={props.books}/>
+        <BookDetails books={props.books}/>
+        <BookImage books={props.books}/>
+      </div>
+    </main>
+  )
 }
 
 export default BookList

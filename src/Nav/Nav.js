@@ -1,13 +1,15 @@
 import React from 'react';
 
-function Nav() {
-  console.log(this.props.state)
+
+//page renders every keydown
+//change value of state? check state?  state is changing, and is one step behind input.  
+function Nav(props) {
   return(
 
     <nav>
-      <form onSubmit={(e) => this.props.submitSearchTerm(e)}>
+      <form onSubmit={props.handleSubmit}>
         <label htmlFor='search'>Search: </label>
-        <input id='search' placeholder="henry" value={this.props.state}>
+        <input id='search' placeholder="henry" value={props.state.input} onChange={e => props.handleChange(e)}>
         </input>
         <button type='submit'>Search</button>
       </form>

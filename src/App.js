@@ -4,43 +4,76 @@ import Nav from './Nav/Nav';
 import BookList from './BookList/BookList';
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      value: 'Shelley' 
-      
-      /* what is the fetch going to return?  = {
-        title: '',
-        image: '',
-        author: '',
-        price: '',
-        description: ''*/
-    
+      input: '',
+      books: '',
+      title: '',
+      image: '',
+      authors: '',
+      price: '',
+      description: '',
+      currencyCode: ''
     }
   }
-  
-  submitSearchTerm = (event) => {
-    
-    console.log('search clicked!!!', event)
-    this.setState({
-      value: event
-    })
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    /*this.setState({
+      submit: this.state.input
+    })*/
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.input}&key=AIzaSyBGfjPxQS3JhHzXUujnrvhWZeYk3Cj_nP4`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Something went wrong, please try again later')
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(data.items);
+        this.setState({
+          books: data.items
+        })
+      })
+      .catch(err => {
+        this.setState({
+          error: err.message
+        })
+      })
   }
-  componentDidMount(){
-    
-  
+
+  /*const authors = book.volumeInfo.authors;
+       const imageUrl = book.volumeInfo.imageLinks.thumbnail;
+       const title = book.volumeInfo.title;
+       const description = book.volumeInfo.description;*/
+
+  /*if (book.saleInfo.listPrice.amount) {
+    const price = book.saleInfo.listPrice.amount
+  } else{
+    const price = ''
+  };
+  const currencyCode = book.saleInfo.listPrice.currencyCode;*/
+  /*image: 'volumeInfo.imageLinks.thumbnail',
+  author: 'volumeInfo.authors',
+  price: 'volumeInfo.listPrice.amount'*/
+  handleChange = (event) => {
+    this.setState({
+      input: event.target.value
+    })
   }
 
   render() {
-    console.log(this.state)
-    return(
+    return (
       <div>
         <h1>Google Book Search</h1>
-        <Nav 
-          
+        <h3>{this.state.submit}</h3>
+        <Nav
           state={this.state}
-          submitSearchTerm={this.submitSearchTerm() }/>
-        <BookList />
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange} />
+        <BookList 
+          books={this.state.books}/>
       </div>
     )
   }
