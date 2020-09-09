@@ -1,6 +1,7 @@
 import React from 'react';
 
 function BookDetails(props) {
+  console.log(props)
   let bookDetails = Array.isArray(props.books) ? props.books.map((book, ind) => {
 
     return (
