@@ -1,16 +1,22 @@
 import React from 'react';
 
-function BookTitle(props){
+function BookTitle(props) {
   console.log(props.books)
-  const bookTitles = props.books.map((book) => {
-    console.log(book)
-        <h2 key={ind}>{title}</h2>
+  const bookTitles = Array.isArray(props.books) ? props.books.map((book, ind) => {
+      
 
-  })
+    return (
+      <h2
+        key={ind}>
+        {book.volumeInfo.title}
+      </h2>
+    )
 
-  return(
-    {bookTitles}
+  }) : '<></>';
+
+  return (
+    <div>{booktitles}</div>
   )
 }
 
-export default  BookTitle
+export default BookTitle

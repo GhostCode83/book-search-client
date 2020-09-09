@@ -4,7 +4,7 @@ import BookImage from '../BookImage/BookImage';
 import BookTitle from '../BookTitle/BookTitle';
 
 function BookList(props) {
-  console.log(props)
+  console.log(props.books)
   return (
     <main>
       <div>
