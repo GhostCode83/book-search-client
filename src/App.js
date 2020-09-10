@@ -8,16 +8,15 @@ class App extends React.Component {
     super(props)
     this.state = {
       input: '',
-      books: [] 
+      books: [],
+      printType: 'all',
+      bookType: 'partial'
     }
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    /*this.setState({
-      submit: this.state.input
-    })*/
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.input}&key=AIzaSyBGfjPxQS3JhHzXUujnrvhWZeYk3Cj_nP4`)
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.input}&printType=${this.state.printType}&filter=${this.state.bookType}&key=AIzaSyBGfjPxQS3JhHzXUujnrvhWZeYk3Cj_nP4`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Something went wrong, please try again later')
@@ -37,6 +36,20 @@ class App extends React.Component {
       })
   }
 
+  handleChangePrintType = (event) => {
+    console.log(event.target.value, 'printType!!!')
+    this.setState({
+      printType: event.target.value
+    })
+  }
+  
+  handleChangeBookType = (event) => {
+    console.log(event)
+    this.setState({
+      bookType: event.target.value
+    })
+  }
+
   handleChange = (event) => {
     this.setState({
       input: event.target.value
@@ -46,12 +59,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Google Book Search</h1>
-        <h3>{this.state.submit}</h3>
-        <Nav
+         <Nav
           state={this.state}
           handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange} />
+          handleChange={this.handleChange} 
+          handleChangePrintType={this.handleChangePrintType}
+          handleChangeBookType={this.handleChangeBookType}/>
         <BookList
           books={this.state.books} />
       </div>

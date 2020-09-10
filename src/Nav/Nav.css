@@ -1,0 +1,24 @@
+ header  {
+  background-color: black;
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+}
+
+header nav div {
+  color: black;
+  background-color: grey
+}
+
+header nav fieldset {
+  background-color: lightgray;
+  color: black;
+  border: none;
+} 
+
+input {
+  background-color: lightyellow;
+}
+

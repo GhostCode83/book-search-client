@@ -1,0 +1,17 @@
+ul {
+  list-style: none;
+  margin-top: 150px;
+}
+
+div h2, .price, .author {
+  text-align: center;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 25vw 65vw;
+}
+
+
+.grid-item-1 {
+  align-self: center;
+}
